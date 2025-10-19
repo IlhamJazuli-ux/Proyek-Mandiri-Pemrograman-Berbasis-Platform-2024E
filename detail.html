@@ -866,10 +866,10 @@ footer a:hover {
     // Sample product data
     const productsData = [
       {
-        id: 'seal-packing-1',
+        id: 'seal-packing',
         nama: 'Seal Packing Hidrolik',
         kategori: 'Seal Packing',
-        image: 'images/seal pack hidrolik.jpg',
+        image: 'images/Seal Packing Hidrolik.jpg',
         deskripsi: 'Seal packing berkualitas tinggi untuk mesin hidrolik dengan performa maksimal.',
         spek: {
           'Jenis': 'Seal Packing Hidrolik',
@@ -890,10 +890,34 @@ footer a:hover {
         stok: 'Tersedia'
       },
       {
-        id: 'o-ring-1',
-        nama: 'O-Ring NBR Premium',
+        id: 'seal-packing-2',
+        nama: 'Seal Packing Pneumatik',
+        kategori: 'Seal Packing',
+        image: 'images/Seal Packing Pneumatik.avif',
+        deskripsi: 'Seal packing untuk sistem pneumatik, tahan terhadap udara bertekanan.',
+        spek: {
+          'Jenis': 'Seal Packing Pneumatik',
+          'Material': 'PU/NBR',
+          'Tekanan Maksimal': '16 Bar',
+          'Suhu Kerja': '-25°C hingga 100°C',
+          'Standar': 'ISO 3320'
+        },
+        fitur: [
+            'Tahan tekanan udara',
+            'Fleksibel dan ringan',
+            'Instalasi mudah',
+            'Performa handal',
+            'Material berkualitas'
+        ],
+        deskripsiLengkap: 'Seal Packing Pneumatik dari JazuliTech dirancang untuk memberikan performa sealing terbaik pada aplikasi pneumatik. Material pilihan memastikan ketahanan terhadap tekanan udara dan durabilitas jangka panjang.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'o-ring',
+        nama: 'O-Ring NBR',
         kategori: 'O-Ring',
-        image: 'images/O ring.jpg',
+        image: 'images/O-Ring NBR.webp',
         deskripsi: 'O-ring presisi tinggi dengan material NBR untuk berbagai aplikasi industri.',
         spek: {
           'Jenis': 'O-Ring NBR',
@@ -914,10 +938,34 @@ footer a:hover {
         stok: 'Tersedia'
       },
       {
+        id: 'o-ring-2',
+        nama: 'O-Ring Viton',
+        kategori: 'O-Ring',
+        image: 'images/O-Ring Viton.jpg',
+        deskripsi: 'O-ring Viton untuk aplikasi suhu tinggi dan chemical resistance.',
+        spek: {
+          'Jenis': 'O-Ring Viton',
+          'Material': 'FKM/Viton',
+          'Suhu Kerja': '-15°C hingga 200°C',
+          'Ketahanan': 'Kimia dan suhu tinggi',
+          'Aplikasi': 'Industri kimia, otomotif'
+        },
+        fitur: [
+            'Tahan suhu tinggi hingga 200°C',
+            'Ketahanan kimia sangat baik',
+            'Performa premium',
+            'Berbagai ukuran',
+            'Standar internasional'
+        ],
+        deskripsiLengkap: 'O-Ring Viton (FKM) adalah solusi premium untuk aplikasi yang menuntut ketahanan terhadap suhu tinggi dan bahan kimia agresif. Produk kami menjamin sealing yang aman dan andal di lingkungan ekstrem.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
         id: 'karet-seal-1',
         nama: 'Karet Seal Custom',
         kategori: 'Karet Seal',
-        image: 'images/karet_seal_1.jpg',
+        image: 'images/Karet Seal Custom.webp',
         deskripsi: 'Karet seal yang dapat disesuaikan dimensinya sesuai kebutuhan spesifik Anda.',
         spek: {
           'Jenis': 'Custom Karet Seal',
@@ -934,6 +982,30 @@ footer a:hover {
           'Lead time singkat'
         ],
         deskripsiLengkap: 'Karet Seal Custom kami memberikan fleksibilitas maksimal untuk kebutuhan sealing yang unik. Dengan layanan potong custom dan material berkualitas, kami memastikan setiap produk sesuai dengan spesifikasi teknis Anda.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'karet-seal-2',
+        nama: 'Karet Seal Sheet',
+        kategori: 'Karet Seal',
+        image: 'images/Karet Seal Sheet.webp',
+        deskripsi: 'Lembaran karet seal untuk berbagai keperluan industri dan manufaktur.',
+        spek: {
+          'Jenis': 'Karet Seal Sheet',
+          'Ukuran': 'Berbagai ukuran lembaran',
+          'Ketebalan': 'Mulai dari 1mm',
+          'Material': 'NBR, EPDM, Silikon',
+          'Aplikasi': 'Gasket, alas produksi'
+        },
+        fitur: [
+            'Format lembaran praktis',
+            'Multi-purpose untuk industri',
+            'Harga ekonomis',
+            'Tersedia berbagai material',
+            'Mudah dipotong'
+        ],
+        deskripsiLengkap: 'Karet Seal Sheet dari JazuliTech adalah solusi serbaguna untuk berbagai kebutuhan industrial, mulai dari pembuatan gasket custom hingga alas peredam getaran. Tersedia dalam berbagai material dan ketebalan.',
         harga: 'Hubungi untuk penawaran',
         stok: 'Tersedia'
       },
@@ -958,6 +1030,30 @@ footer a:hover {
           'Stok melimpah'
         ],
         deskripsiLengkap: 'Roll Rubber Industrial JazuliTech adalah solusi ekonomis untuk kebutuhan produksi skala besar. Dengan material berkualitas tinggi dan harga kompetitif, roll rubber kami cocok untuk berbagai aplikasi industri mulai dari packing hingga produksi.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'roll-rubber-2',
+        nama: 'Roll Rubber Conveyor',
+        kategori: 'Roll Rubber',
+        image: 'images/Roll Rubber Conveyor.jpg',
+        deskripsi: 'Roll rubber khusus untuk conveyor belt dan sistem transportasi material.',
+        spek: {
+          'Jenis': 'Roll Rubber Conveyor',
+          'Kekerasan': '60-70 Shore A',
+          'Fitur': 'Tahan abrasi',
+          'Lapisan': 'Dengan atau tanpa lapisan kain',
+          'Aplikasi': 'Belt conveyor industri'
+        },
+        fitur: [
+            'Didesain untuk heavy duty',
+            'Sangat tahan abrasi (wear resistant)',
+            'Umur pakai panjang',
+            'Mengurangi slip pada conveyor',
+            'Performa stabil'
+        ],
+        deskripsiLengkap: 'Roll Rubber Conveyor kami dirancang khusus untuk melapisi drum pada sistem conveyor, memberikan cengkeraman optimal dan mengurangi slip. Material yang tahan abrasi memastikan umur pakai yang panjang bahkan di kondisi kerja yang berat.',
         harga: 'Hubungi untuk penawaran',
         stok: 'Tersedia'
       }
