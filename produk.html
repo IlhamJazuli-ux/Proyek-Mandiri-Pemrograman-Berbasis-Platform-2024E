@@ -151,20 +151,13 @@ main {
 /* Product Cards */
 .product-card {
   background: white;
-<<<<<<< HEAD
   border-radius: 20px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-=======
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 0.4s;
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   height: 100%;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   position: relative;
 }
 
@@ -188,13 +181,6 @@ main {
 .product-card:hover {
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-=======
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
 }
 
 .product-img {
@@ -207,19 +193,11 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-<<<<<<< HEAD
   transition: transform 0.6s ease;
 }
 
 .product-card:hover .product-img img {
   transform: scale(1.15) rotate(2deg);
-=======
-  transition: transform 0.4s;
-}
-
-.product-card:hover .product-img img {
-  transform: scale(1.15);
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
 }
 
 .product-badge {
@@ -241,11 +219,8 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
   position: relative;
   z-index: 2;
-=======
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
 }
 
 .product-category {
@@ -304,11 +279,7 @@ main {
   border: none;
   color: white;
   padding: 0.6rem 1rem;
-<<<<<<< HEAD
   border-radius: 10px;
-=======
-  border-radius: 8px;
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
   font-weight: 600;
   transition: all 0.3s;
   text-decoration: none;
@@ -319,10 +290,7 @@ main {
   background: var(--secondary);
   transform: scale(1.05);
   color: white;
-<<<<<<< HEAD
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-=======
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
 }
 
 .btn-quote {
@@ -331,11 +299,7 @@ main {
   border: 2px solid var(--primary);
   color: var(--primary);
   padding: 0.6rem 1rem;
-<<<<<<< HEAD
   border-radius: 10px;
-=======
-  border-radius: 8px;
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
   font-weight: 600;
   transition: all 0.3s;
 }
@@ -444,11 +408,7 @@ footer a:hover {
           <i class="fas fa-home me-1"></i> Beranda
         </a>
         <a class="btn btn-outline-light btn-sm" href="kontak.html">
-<<<<<<< HEAD
           <i class="fas fa-envelope me-1"></i> Hubungi Kami
-=======
-          <i class="fas fa-envelope me-1"></i> Kontak
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
         </a>
       </nav>
     </div>
@@ -456,22 +416,13 @@ footer a:hover {
 
   <div class="page-header">
     <div class="container">
-<<<<<<< HEAD
       <h2 data-aos="fade-right"><i class="fas fa-box-open me-3"></i>Katalog Produk</h2>
       <p data-aos="fade-left">Temukan berbagai produk seal dan rubber berkualitas untuk kebutuhan industri Anda</p>
-=======
-      <h2><i class="fas fa-box-open me-2"></i>Katalog Produk</h2>
-      <p>Temukan berbagai produk seal dan rubber berkualitas untuk kebutuhan industri Anda</p>
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
     </div>
   </div>
 
   <main class="container">
-<<<<<<< HEAD
     <div class="filter-section" data-aos="fade-up">
-=======
-    <div class="filter-section">
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
       <div class="row g-3 align-items-center">
         <div class="col-md-4">
           <div class="search-box">
@@ -496,11 +447,7 @@ footer a:hover {
 
     <div id="productGrid" class="row g-4"></div>
 
-<<<<<<< HEAD
     <div id="emptyState" class="empty-state" style="display: none;" data-aos="fade-up">
-=======
-    <div id="emptyState" class="empty-state" style="display: none;">
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
       <i class="fas fa-search"></i>
       <h4>Produk Tidak Ditemukan</h4>
       <p>Coba ubah filter atau kata kunci pencarian Anda</p>
@@ -646,13 +593,8 @@ footer a:hover {
       emptyState.style.display = 'none';
       countElement.textContent = `Menampilkan ${productsToRender.length} produk`;
 
-<<<<<<< HEAD
       grid.innerHTML = productsToRender.map((product, index) => `
         <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="${index * 100}">
-=======
-      grid.innerHTML = productsToRender.map(product => `
-        <div class="col-lg-3 col-md-4 col-sm-6">
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
           <div class="product-card">
             <div class="product-img">
               <img src="${product.image}" alt="${product.name}">
@@ -670,11 +612,7 @@ footer a:hover {
                   <i class="fas fa-info-circle me-1"></i> Detail
                 </a>
                 <button class="btn-quote" onclick="openQuote('${product.name}')">
-<<<<<<< HEAD
                   <i class="fas fa-comments me-1"></i> Minta Penawaran
-=======
-                  <i class="fas fa-comments me-1"></i> Pesan
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
                 </button>
               </div>
             </div>

@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   // prefill quote from localStorage
   const msg = localStorage.getItem('prefillQuote'); if(msg){ const el=document.getElementById('pesan'); if(el) el.value=msg; localStorage.removeItem('prefillQuote'); }
-<<<<<<< HEAD
 
   // hero slider
   const slides = document.querySelectorAll('.hero-slide');
@@ -39,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function(){
     hero.addEventListener('mouseenter', ()=>clearInterval(autoSlide));
     hero.addEventListener('mouseleave', ()=>setInterval(autoSlide, 5000));
   }
-=======
->>>>>>> 2ea3817985eee75de7d0e24c55b6177e73aebd0c
 });
 
 function openQuote(name){ localStorage.setItem('prefillQuote','Permintaan penawaran untuk: '+name); window.location.href='kontak.html'; }
