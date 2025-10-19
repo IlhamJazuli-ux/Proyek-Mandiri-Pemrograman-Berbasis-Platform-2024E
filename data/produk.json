@@ -1,0 +1,47 @@
+[
+  {
+    "id": "seal-packing",
+    "nama": "Seal Packing",
+    "deskripsi": "Seal packing berkualitas, tahan minyak & bahan kimia.",
+    "image": "images/seal_packing.jpg",
+    "harga": "Hubungi kami",
+    "stok": "Tersedia",
+    "kategori": "seal"
+  },
+  {
+    "id": "o-ring",
+    "nama": "O-Ring",
+    "deskripsi": "O-ring presisi dalam berbagai ukuran untuk sealing yang rapat.",
+    "image": "images/o_ring.jpg",
+    "harga": "Hubungi kami",
+    "stok": "Tersedia",
+    "kategori": "oring"
+  },
+  {
+    "id": "roll-rubber",
+    "nama": "Roll Rubber",
+    "deskripsi": "Roll rubber siap pakai, tersedia per meter untuk produksi & packing.",
+    "image": "images/roll_rubber.jpg",
+    "harga": "Hubungi kami",
+    "stok": "Tersedia",
+    "kategori": "roll"
+  },
+  {
+    "id": "karet-seal-1",
+    "nama": "Karet Seal",
+    "deskripsi": "Karet seal custom, dapat dipotong sesuai dimensi aplikasi Anda.",
+    "image": "images/karet_seal_1.jpg",
+    "harga": "Hubungi kami",
+    "stok": "Tersedia",
+    "kategori": "seal"
+  },
+  {
+    "id": "karet-seal-2",
+    "nama": "Karet Seal (Roll)",
+    "deskripsi": "Roll rubber dengan elastisitas tinggi untuk berbagai keperluan.",
+    "image": "images/karet_seal_2.jpg",
+    "harga": "Hubungi kami",
+    "stok": "Tersedia",
+    "kategori": "roll"
+  }
+]

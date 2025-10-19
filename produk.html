@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Produk - JazuliTech</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --primary: #1e3a8a;
+  --secondary: #3b82f6;
+  --accent: #f59e0b;
+  --dark: #1f2937;
+  --light: #f3f4f6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.navbar-brand img {
+  height: 44px;
+  transition: transform 0.3s;
+}
+
+.navbar-brand:hover img {
+  transform: rotate(360deg);
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.brand-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.9);
+}
+
+nav .btn {
+  transition: all 0.3s;
+  border-width: 2px;
+}
+
+nav .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255,255,255,0.3);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 3rem 0;
+}
+
+.page-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  padding: 3rem 0;
+  margin: -3rem 0 3rem 0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.page-header h2 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* Filter Section */
+.filter-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.filter-section select {
+  border: 2px solid var(--light);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s;
+}
+
+.filter-section select:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  border: 2px solid var(--light);
+  border-radius: 10px;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.search-box input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+  outline: none;
+}
+
+.search-box i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+/* Product Cards */
+.product-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1;
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+}
+
+.product-img {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-img img {
+  transform: scale(1.15) rotate(2deg);
+}
+
+.product-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--accent);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.product-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.product-category {
+  color: var(--secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.product-title {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.product-desc {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.product-features li {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.product-features li::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+}
+
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-detail {
+  flex: 1;
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-detail:hover {
+  background: var(--secondary);
+  transform: scale(1.05);
+  color: white;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn-quote {
+  flex: 1;
+  background: white;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-quote:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #d1d5db;
+  margin-bottom: 1rem;
+}
+
+.empty-state h4 {
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: #9ca3af;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
+  color: white;
+  padding: 3rem 0 2rem;
+  margin-top: auto;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #fbbf24;
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #25d366;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+  transition: all 0.3s;
+  z-index: 1000;
+  animation: bounce 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.7);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 2rem 0;
+    margin: -3rem 0 2rem 0;
+  }
+  
+  .filter-section {
+    padding: 1rem;
+  }
+  
+  .product-img {
+    height: 180px;
+  }
+}
+</style>
+</head>
+<body>
+  <header class="navbar navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="JazuliTech Logo">
+        <div>
+          <div class="brand-title">JazuliTech</div>
+          <small class="brand-sub">Seal & Rubber Parts</small>
+        </div>
+      </a>
+      <nav>
+        <a class="btn btn-outline-light btn-sm me-2" href="index.html">
+          <i class="fas fa-home me-1"></i> Beranda
+        </a>
+        <a class="btn btn-outline-light btn-sm" href="kontak.html">
+          <i class="fas fa-envelope me-1"></i> Hubungi Kami
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h2 data-aos="fade-right"><i class="fas fa-box-open me-3"></i>Katalog Produk</h2>
+      <p data-aos="fade-left">Temukan berbagai produk seal dan rubber berkualitas untuk kebutuhan industri Anda</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="filter-section" data-aos="fade-up">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-4">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchBox" class="form-control" placeholder="Cari produk...">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <select id="filterCat" class="form-select">
+            <option value="all">Semua Kategori</option>
+            <option value="seal">Seal Packing</option>
+            <option value="oring">O-Ring</option>
+            <option value="karet">Karet Seal</option>
+            <option value="roll">Roll Rubber</option>
+          </select>
+        </div>
+        <div class="col-md-4 text-end">
+          <span class="text-muted" id="productCount">Menampilkan semua produk</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="productGrid" class="row g-4"></div>
+
+    <div id="emptyState" class="empty-state" style="display: none;" data-aos="fade-up">
+      <i class="fas fa-search"></i>
+      <h4>Produk Tidak Ditemukan</h4>
+      <p>Coba ubah filter atau kata kunci pencarian Anda</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <img src="images/logo.png" alt="logo" style="height:44px" class="mb-3">
+          <div>
+            <strong style="font-size: 1.2rem;">JazuliTech Seal & Rubber Parts</strong>
+            <p class="mt-3 mb-2">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              Jl Sambungrejo Semambung Rt 19 Rw 08<br>
+              Sukodono Sidoarjo Jawa Timur
+            </p>
+            <p class="mb-2">
+              <i class="fas fa-envelope me-2"></i>
+              <a href="mailto:ilhamjazuli56@gmail.com">ilhamjazuli56@gmail.com</a>
+            </p>
+            <p>
+              <i class="fas fa-phone me-2"></i>
+              <a href="tel:+6281331185474">+62 813-3118-5474</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-2">&copy; 2025 JazuliTech</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/6281331185474" target="_blank" aria-label="Chat via WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Sample product data
+    const products = [
+      {
+        id: 'seal-packing-1',
+        name: 'Seal Packing Hidrolik',
+        category: 'seal',
+        categoryName: 'Seal Packing',
+        image: 'images/Seal Packing Hidrolik.jpg',
+        description: 'Seal packing berkualitas tinggi untuk mesin hidrolik, tahan minyak dan tekanan tinggi.',
+        features: ['Tahan minyak', 'Tekanan tinggi', 'Anti bocor'],
+        badge: 'Populer'
+      },
+      {
+        id: 'seal-packing-2',
+        name: 'Seal Packing Pneumatik',
+        category: 'seal',
+        categoryName: 'Seal Packing',
+        image: 'images/Seal Packing Pneumatik.avif',
+        description: 'Seal packing untuk sistem pneumatik, tahan terhadap udara bertekanan.',
+        features: ['Tahan tekanan', 'Fleksibel', 'Awet'],
+        badge: ''
+      },
+      {
+        id: 'o-ring-1',
+        name: 'O-Ring NBR',
+        category: 'oring',
+        categoryName: 'O-Ring',
+        image: 'images/O-Ring NBR.webp',
+        description: 'O-ring NBR berbagai ukuran, cocok untuk aplikasi umum industri.',
+        features: ['Berbagai ukuran', 'Material NBR', 'Presisi tinggi'],
+        badge: 'Terlaris'
+      },
+      {
+        id: 'o-ring-2',
+        name: 'O-Ring Viton',
+        category: 'oring',
+        categoryName: 'O-Ring',
+        image: 'images/O-Ring Viton.jpg',
+        description: 'O-ring Viton untuk aplikasi suhu tinggi dan chemical resistance.',
+        features: ['Tahan suhu tinggi', 'Chemical resistant', 'Premium quality'],
+        badge: 'Premium'
+      },
+      {
+        id: 'karet-seal-1',
+        name: 'Karet Seal Custom',
+        category: 'karet',
+        categoryName: 'Karet Seal',
+        image: 'images/Karet Seal Custom.webp',
+        description: 'Karet seal custom, dapat dipotong sesuai dimensi kebutuhan Anda.',
+        features: ['Custom cutting', 'Berbagai ketebalan', 'Presisi tinggi'],
+        badge: 'Custom'
+      },
+      {
+        id: 'karet-seal-2',
+        name: 'Karet Seal Sheet',
+        category: 'karet',
+        categoryName: 'Karet Seal',
+        image: 'images/Karet Seal Sheet.webp',
+        description: 'Lembaran karet seal untuk berbagai keperluan industri dan manufaktur.',
+        features: ['Sheet format', 'Multi purpose', 'Ekonomis'],
+        badge: ''
+      },
+      {
+        id: 'roll-rubber-1',
+        name: 'Roll Rubber Industrial',
+        category: 'roll',
+        categoryName: 'Roll Rubber',
+        image: 'images/roll_rubber.jpg',
+        description: 'Roll rubber untuk keperluan produksi dan packing industri.',
+        features: ['Roll besar', 'Tahan lama', 'Multi fungsi'],
+        badge: 'Best Seller'
+      },
+      {
+        id: 'roll-rubber-2',
+        name: 'Roll Rubber Conveyor',
+        category: 'roll',
+        categoryName: 'Roll Rubber',
+        image: 'images/Roll Rubber Conveyor.jpg',
+        description: 'Roll rubber khusus untuk conveyor belt dan sistem transportasi material.',
+        features: ['Heavy duty', 'Wear resistant', 'Long lasting'],
+        badge: ''
+      }
+    ];
+
+    let filteredProducts = [...products];
+
+    // Render products
+    function renderProducts(productsToRender) {
+      const grid = document.getElementById('productGrid');
+      const emptyState = document.getElementById('emptyState');
+      const countElement = document.getElementById('productCount');
+
+      if (productsToRender.length === 0) {
+        grid.innerHTML = '';
+        emptyState.style.display = 'block';
+        countElement.textContent = 'Tidak ada produk ditemukan';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      countElement.textContent = `Menampilkan ${productsToRender.length} produk`;
+
+      grid.innerHTML = productsToRender.map((product, index) => `
+        <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="${index * 100}">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="${product.image}" alt="${product.name}">
+              ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+            </div>
+            <div class="product-body">
+              <div class="product-category">${product.categoryName}</div>
+              <h5 class="product-title">${product.name}</h5>
+              <p class="product-desc">${product.description}</p>
+              <ul class="product-features">
+                ${product.features.map(f => `<li>${f}</li>`).join('')}
+              </ul>
+              <div class="product-actions">
+                <a href="detail.html?id=${product.id}" class="btn-detail">
+                  <i class="fas fa-info-circle me-1"></i> Detail
+                </a>
+                <button class="btn-quote" onclick="openQuote('${product.name}')">
+                  <i class="fas fa-comments me-1"></i> Minta Penawaran
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter function
+    function filterProducts() {
+      const category = document.getElementById('filterCat').value;
+      const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+
+      filteredProducts = products.filter(product => {
+        const matchCategory = category === 'all' || product.category === category;
+        const matchSearch = product.name.toLowerCase().includes(searchTerm) || 
+                           product.description.toLowerCase().includes(searchTerm);
+        return matchCategory && matchSearch;
+      });
+
+      renderProducts(filteredProducts);
+    }
+
+    // Event listeners
+    document.getElementById('filterCat').addEventListener('change', filterProducts);
+    document.getElementById('searchBox').addEventListener('input', filterProducts);
+
+    // Quote function
+    function openQuote(productName) {
+      const message = `Halo, saya tertarik dengan produk ${productName}. Bisakah saya mendapatkan penawaran harga?`;
+      const whatsappUrl = `https://wa.me/6281331185474?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Initial render
+    renderProducts(products);
+  </script>
+</body>
+</html>
