@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Detail Produk - JazuliTech</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<style>
+:root {
+  --primary: #1e3a8a;
+  --secondary: #3b82f6;
+  --accent: #f59e0b;
+  --dark: #1f2937;
+  --light: #f3f4f6;
+  --success: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.navbar img {
+  height: 44px;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.navbar a:hover img {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.brand-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.95);
+}
+
+/* Breadcrumb */
+.breadcrumb-section {
+  background: white;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--light);
+  position: sticky;
+  top: 76px;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb-item {
+  color: #6b7280;
+  transition: all 0.3s;
+}
+
+.breadcrumb-item.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.breadcrumb-item a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.breadcrumb-item a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--primary);
+  transition: width 0.3s;
+}
+
+.breadcrumb-item a:hover::after {
+  width: 100%;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--primary);
+  transform: translateX(3px);
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 3rem 0;
+}
+
+/* Product Image Gallery */
+.product-gallery {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.product-gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+.gallery-main {
+  position: relative;
+  height: 450px;
+  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 50%, #f9fafb 100%);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.gallery-main:hover img {
+  transform: scale(1.08);
+}
+
+.zoom-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.zoom-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.stock-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.stock-badge.in-stock {
+  background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+  color: white;
+}
+
+.stock-badge.low-stock {
+  background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+  color: white;
+}
+
+/* Product Info */
+.product-info {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.product-category {
+  color: var(--secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  transition: all 0.3s;
+}
+
+.product-category:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.product-title {
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--light);
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.stars i {
+  color: #fbbf24;
+  font-size: 1rem;
+  transition: all 0.3s;
+  animation: starFloat 3s ease-in-out infinite;
+}
+
+.stars i:nth-child(1) { animation-delay: 0s; }
+.stars i:nth-child(2) { animation-delay: 0.1s; }
+.stars i:nth-child(3) { animation-delay: 0.2s; }
+.stars i:nth-child(4) { animation-delay: 0.3s; }
+.stars i:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes starFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.stars:hover i {
+  color: #f59e0b;
+  transform: scale(1.2) rotate(15deg);
+}
+
+.rating-count {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Specs */
+.specs-section {
+  margin-bottom: 2rem;
+}
+
+.specs-section h5 {
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--light);
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+
+.spec-item:hover {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  transform: translateX(5px);
+  border-left: 3px solid var(--secondary);
+}
+
+.spec-item:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.spec-value {
+  color: #6b7280;
+  text-align: right;
+}
+
+/* Features */
+.features-section {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.features-section h5 {
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #374151;
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.features-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, white 0%, #f9fafb 100%);
+}
+
+.features-list i {
+  color: var(--secondary);
+  font-weight: bold;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+/* Description */
+.description-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  color: #6b7280;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--secondary);
+}
+
+.description-section h5 {
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 1.2rem;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-action::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-action:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-primary-action {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.btn-primary-action:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+}
+
+.btn-secondary-action {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.1);
+}
+
+.btn-secondary-action:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+}
+
+/* Price Box */
+.price-box {
+  background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.price-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.price-label {
+  font-size: 0.9rem;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.price-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.price-note {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* Related Products */
+.related-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.related-section h4 {
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.related-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.related-card {
+  background: white;
+  border: 2px solid var(--light);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.related-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border-color: var(--secondary);
+}
+
+.related-img {
+  height: 180px;
+  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.related-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.related-card:hover .related-img::after {
+  opacity: 1;
+}
+
+.related-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.related-card:hover .related-img img {
+  transform: scale(1.1);
+}
+
+.related-body {
+  padding: 1.2rem;
+}
+
+.related-name {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.related-card:hover .related-name {
+  color: var(--secondary);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
+  color: white;
+  padding: 3rem 0 2rem;
+  margin-top: 4rem;
+  position: relative;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+}
+
+footer a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+footer a:hover::after {
+  width: 100%;
+}
+
+footer a:hover {
+  color: #fbbf24;
+  transform: translateX(3px);
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--light);
+  border-top-color: var(--secondary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+  transition: all 0.3s;
+  z-index: 1000;
+  animation: bounce 2s infinite;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.7);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scroll to top button */
+.scroll-top {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-title {
+    font-size: 1.75rem;
+  }
+  
+  .gallery-main {
+    height: 300px;
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .related-img {
+    height: 150px;
+  }
+}
+</style>
+</head>
+<body>
+  <header class="navbar navbar-dark">
+    <div class="container">
+      <a href="index.html" data-aos="fade-down">
+        <img src="images/logo.png" alt="JazuliTech Logo">
+        <div>
+          <div class="brand-title">JazuliTech</div>
+          <small class="brand-sub">Seal & Rubber Parts</small>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <div class="breadcrumb-section" data-aos="fade-down">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home me-1"></i> Beranda</a></li>
+          <li class="breadcrumb-item"><a href="produk.html"><i class="fas fa-box me-1"></i> Produk</a></li>
+          <li class="breadcrumb-item active" id="breadcrumbActive">Detail Produk</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container" id="productArea">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Memuat detail produk...</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-up">
+          <img src="images/logo.png" alt="logo" style="height:44px" class="mb-3">
+          <div>
+            <strong style="font-size: 1.2rem;">JazuliTech Seal & Rubber Parts</strong>
+            <p class="mt-3 mb-2">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              Jl Sambungrejo Semambung Rt 19 Rw 08<br>
+              Sukodono Sidoarjo Jawa Timur
+            </p>
+            <p class="mb-2">
+              <i class="fas fa-envelope me-2"></i>
+              <a href="mailto:ilhamjazuli56@gmail.com">ilhamjazuli56@gmail.com</a>
+            </p>
+            <p>
+              <i class="fas fa-phone me-2"></i>
+              <a href="tel:+6281331185474">+62 813-3118-5474</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end" data-aos="fade-up" data-aos-delay="100">
+          <p class="mb-2">&copy; 2025 JazuliTech</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/6281331185474" target="_blank" aria-label="Chat via WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+
+    // Sample product data
+    const productsData = [
+      {
+        id: 'seal-packing-1',
+        nama: 'Seal Packing Hidrolik',
+        kategori: 'Seal Packing',
+        image: 'images/seal pack hidrolik.jpg',
+        deskripsi: 'Seal packing berkualitas tinggi untuk mesin hidrolik dengan performa maksimal.',
+        spek: {
+          'Jenis': 'Seal Packing Hidrolik',
+          'Material': 'NBR/Kulit',
+          'Tekanan Maksimal': '250 Bar',
+          'Suhu Kerja': '-20°C hingga 80°C',
+          'Standar': 'ISO 6072'
+        },
+        fitur: [
+          'Tahan minyak hidraulik',
+          'Tekanan tinggi hingga 250 bar',
+          'Daya tahan lama',
+          'Performa stabil',
+          'Sertifikat ISO'
+        ],
+        deskripsiLengkap: 'Seal Packing Hidrolik JazuliTech dirancang khusus untuk sistem hidrolik yang membutuhkan performa tinggi dan keandalan maksimal. Material berkualitas premium dengan konstruksi presisi menghasilkan sealing yang sempurna dan tahan lama pada berbagai kondisi tekanan.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'o-ring-1',
+        nama: 'O-Ring NBR Premium',
+        kategori: 'O-Ring',
+        image: 'images/O ring.jpg',
+        deskripsi: 'O-ring presisi tinggi dengan material NBR untuk berbagai aplikasi industri.',
+        spek: {
+          'Jenis': 'O-Ring NBR',
+          'Diameter': 'Berbagai ukuran',
+          'Ketebalan': 'Sesuai standar',
+          'Material': 'NBR 70 Shore A',
+          'Aplikasi': 'Umum industri'
+        },
+        fitur: [
+          'Presisi tinggi',
+          'Material NBR berkualitas',
+          'Berbagai ukuran tersedia',
+          'Tahan gesek',
+          'Anti aging'
+        ],
+        deskripsiLengkap: 'O-Ring NBR JazuliTech menawarkan solusi sealing yang reliable untuk berbagai aplikasi industri. Dengan toleransi ketat dan material berkualitas tinggi, O-ring kami memberikan performa optimal dalam sistem pneumatik maupun hidrolik.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'karet-seal-1',
+        nama: 'Karet Seal Custom',
+        kategori: 'Karet Seal',
+        image: 'images/karet_seal_1.jpg',
+        deskripsi: 'Karet seal yang dapat disesuaikan dimensinya sesuai kebutuhan spesifik Anda.',
+        spek: {
+          'Jenis': 'Custom Karet Seal',
+          'Ketebalan': 'Dapat disesuaikan',
+          'Material': 'Karet NBR/EPDM',
+          'Potong': 'Custom sizing',
+          'Aplikasi': 'Multi-purpose'
+        },
+        fitur: [
+          'Potong custom sesuai dimensi',
+          'Tersedia berbagai ketebalan',
+          'Material fleksibel',
+          'Presisi tinggi',
+          'Lead time singkat'
+        ],
+        deskripsiLengkap: 'Karet Seal Custom kami memberikan fleksibilitas maksimal untuk kebutuhan sealing yang unik. Dengan layanan potong custom dan material berkualitas, kami memastikan setiap produk sesuai dengan spesifikasi teknis Anda.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      },
+      {
+        id: 'roll-rubber-1',
+        nama: 'Roll Rubber Industrial',
+        kategori: 'Roll Rubber',
+        image: 'images/roll_rubber.jpg',
+        deskripsi: 'Roll rubber berkualitas untuk keperluan produksi dan packing industri.',
+        spek: {
+          'Jenis': 'Roll Rubber',
+          'Panjang': 'Custom sesuai kebutuhan',
+          'Lebar': 'Dapat disesuaikan',
+          'Ketebalan': 'Berbagai pilihan',
+          'Aplikasi': 'Produksi & packing'
+        },
+        fitur: [
+          'Roll ukuran besar',
+          'Material tahan lama',
+          'Multi fungsi',
+          'Harga ekonomis',
+          'Stok melimpah'
+        ],
+        deskripsiLengkap: 'Roll Rubber Industrial JazuliTech adalah solusi ekonomis untuk kebutuhan produksi skala besar. Dengan material berkualitas tinggi dan harga kompetitif, roll rubber kami cocok untuk berbagai aplikasi industri mulai dari packing hingga produksi.',
+        harga: 'Hubungi untuk penawaran',
+        stok: 'Tersedia'
+      }
+    ];
+
+    function loadProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      
+      let product = productsData.find(p => p.id === id);
+      if (!product) {
+        product = productsData[0];
+      }
+
+      const productArea = document.getElementById('productArea');
+      const breadcrumb = document.getElementById('breadcrumbActive');
+
+      breadcrumb.textContent = product.nama;
+
+      let specsHTML = '';
+      let specIndex = 0;
+      for (const [key, value] of Object.entries(product.spek)) {
+        specsHTML += `
+          <div class="spec-item" data-aos="fade-left" data-aos-delay="${specIndex * 50}">
+            <span class="spec-label">${key}</span>
+            <span class="spec-value">${value}</span>
+          </div>
+        `;
+        specIndex++;
+      }
+
+      let featuresHTML = product.fitur.map((f, idx) => `
+        <li data-aos="zoom-in" data-aos-delay="${idx * 50}""><i class="fas fa-check-circle"></i> ${f}</li>
+      `).join('');
+
+      productArea.innerHTML = `
+        <div class="row g-4 mb-5">
+          <!-- Left Column - Gallery -->
+          <div class="col-lg-6">
+            <div class="product-gallery" data-aos="fade-right">
+              <div class="gallery-main">
+                <img src="${product.image}" alt="${product.nama}">
+                <div class="zoom-badge">
+                  <i class="fas fa-search-plus"></i> Klik untuk zoom
+                </div>
+                <div class="stock-badge in-stock">
+                  <i class="fas fa-check-circle me-1"></i> ${product.stok}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Info -->
+          <div class="col-lg-6">
+            <div class="product-info" data-aos="fade-left">
+              <div class="product-category" data-aos="fade-down" data-aos-delay="100">
+                <i class="fas fa-tag me-1"></i> ${product.kategori}
+              </div>
+              
+              <h1 class="product-title" data-aos="fade-down" data-aos-delay="150">${product.nama}</h1>
+
+              <div class="product-rating" data-aos="fade-up" data-aos-delay="200">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="rating-count">(124 ulasan)</span>
+              </div>
+
+              <div class="price-box" data-aos="zoom-in" data-aos-delay="250">
+                <div class="price-label">Harga</div>
+                <div class="price-value">${product.harga}</div>
+                <div class="price-note">Hubungi untuk penawaran khusus & diskon</div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-action btn-primary-action" onclick="openWhatsapp('${product.nama}')" data-aos="fade-right" data-aos-delay="300">
+                  <i class="fab fa-whatsapp me-2"></i> Pesan via WhatsApp
+                </button>
+                <a href="kontak.html" class="btn-action btn-secondary-action" style="text-decoration: none;" data-aos="fade-left" data-aos-delay="300">
+                  <i class="fas fa-envelope me-2"></i> Hubungi Kami
+                </a>
+              </div>
+
+              <!-- Spesifikasi -->
+              <div class="specs-section" data-aos="fade-up" data-aos-delay="350">
+                <h5><i class="fas fa-cogs me-2"></i> Spesifikasi Teknis</h5>
+                ${specsHTML}
+              </div>
+
+              <!-- Fitur -->
+              <div class="features-section" data-aos="fade-up" data-aos-delay="400">
+                <h5><i class="fas fa-lightbulb me-2"></i> Keunggulan Produk</h5>
+                <ul class="features-list">
+                  ${featuresHTML}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="description-section" data-aos="fade-up" data-aos-delay="100">
+          <h5><i class="fas fa-info-circle me-2"></i> Deskripsi Lengkap</h5>
+          <p>${product.deskripsiLengkap}</p>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-section" data-aos="fade-up" data-aos-delay="150">
+          <h4><i class="fas fa-th me-2"></i> Produk Terkait</h4>
+          <div class="row g-3">
+            ${productsData.filter(p => p.id !== product.id).slice(0, 3).map((p, idx) => `
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="${idx * 100}">
+                <a href="detail.html?id=${p.id}" class="related-card">
+                  <div class="related-img">
+                    <img src="${p.image}" alt="${p.nama}">
+                  </div>
+                  <div class="related-body">
+                    <div class="related-name">${p.nama}</div>
+                    <small style="color: #9ca3af;">${p.kategori}</small>
+                  </div>
+                </a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      // Refresh AOS after content loaded
+      setTimeout(() => {
+        AOS.refresh();
+      }, 100);
+    }
+
+    function openWhatsapp(productName) {
+      const message = `Halo, saya tertarik dengan produk *${productName}*. Bisakah saya mendapatkan informasi dan penawaran harga?`;
+      const whatsappUrl = `https://wa.me/6281331185474?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Scroll to top functionality
+    const scrollTopBtn = document.getElementById('scrollTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Load product on page load
+    window.addEventListener('load', loadProduct);
+  </script>
+</body>
+</html>
