@@ -57,5 +57,7 @@ Tidak ada proses build atau instalasi yang diperlukan. Cukup buka salah satu fil
 **Contoh:**
 Klik dua kali pada file `index.html` atau buka melalui menu `File > Open File` di browser Anda.
 
-![Home Page](https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-file-C-Users-aspir-Downloads-JazTech-index-html-2025-10-19-19_12_15.png
-)
+![Home Page](https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-file-C-Users-aspir-Downloads-JazTech-index-html-2025-10-19-19_12_15.png)
+![Home Page](https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-file-C-Users-aspir-Downloads-JazTech-kontak-html-2025-10-19-19_12_43.png)
+![Home Page](https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-ilhamjazuli-ux-github-io-Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E-detail-html-2025-10-19-19_13_28.png)
+![Home Page](https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-ilhamjazuli-ux-github-io-Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E-produk-html-2025-10-19-19_13_02.png)
