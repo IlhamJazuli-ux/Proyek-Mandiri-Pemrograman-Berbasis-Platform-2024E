@@ -56,3 +56,5 @@ Tidak ada proses build atau instalasi yang diperlukan. Cukup buka salah satu fil
 
 **Contoh:**
 Klik dua kali pada file `index.html` atau buka melalui menu `File > Open File` di browser Anda.
+
+https://github.com/IlhamJazuli-ux/Proyek-Mandiri-Pemrograman-Berbasis-Platform-2024E/blob/main/screencapture-file-C-Users-aspir-Downloads-JazTech-index-html-2025-10-19-19_12_15.png
